@@ -1,0 +1,7 @@
+{
+  "name": "pit-scout",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
