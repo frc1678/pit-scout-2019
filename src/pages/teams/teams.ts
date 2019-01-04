@@ -2,13 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController, NavParams, ActionSheetController } from 'ionic-angular';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Rx';
-
-/**
- * Generated class for the TeamsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { InfoPage } from '../info/info';
 
 @IonicPage()
 @Component({
@@ -30,10 +24,15 @@ export class TeamsPage {
     this.teams = this.teamsList.valueChanges();
     this.fb = firebase;
   }
+
+  goToInfoPage() {
+    console.log("go to InfoPage")
+    this.navCtrl.push(InfoPage);
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad TeamsPage');
-
   }
+
   addTeam(){
     let prompt = this.alertCtrl.create({
       title: 'New Team',

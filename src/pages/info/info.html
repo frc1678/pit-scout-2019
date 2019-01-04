@@ -1,0 +1,139 @@
+<!--
+  Generated template for the InfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label color="primary" fixed>Available Weight</ion-label>
+    <ion-input [(ngModel)]="pitAvailableWeight" placeholder="Available Weight" (ionChange)="availableWeightChanged($event)"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" fixed>Robot Width</ion-label>
+    <ion-input [(ngModel)]="pitRobotWidth" placeholder="Robot Width"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" fixed>Robot Length</ion-label>
+    <ion-input [(ngModel)]="pitRobotLength" placeholder="Robot Length"></ion-input>
+  </ion-item>
+
+  <ion-title> <p align="left">Wheel Diameter</p></ion-title>
+  <ion-segment [(ngModel)]="pitWheelDiameter" color="primary" (ionChange)="wheelDiameterChanged($event)">
+    <ion-segment-button value="4 Inches">
+      4 Inches
+    </ion-segment-button>
+    <ion-segment-button value="6 Inches">
+      6 Inches
+    </ion-segment-button>
+    <ion-segment-button value="Other">
+      Other
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-title> <p align="left">Programming Language</p></ion-title>
+  <ion-segment [(ngModel)]="pitProgrammingLanguage" color="primary" (ionChange)="programmingLanguageChanged($event)">
+    <ion-segment-button value="Java">
+      Java
+    </ion-segment-button>
+    <ion-segment-button value="C++">
+      C++
+    </ion-segment-button>
+    <ion-segment-button value="LabVIEW">
+      LabVIEW
+    </ion-segment-button>
+    <ion-segment-button value="Other">
+      Other
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-title> <p align="left">Drive Train</p></ion-title>
+  <ion-segment [(ngModel)]="pitDriveTrain" color="primary" (ionChange)="driveTrainChanged($event)">
+    <ion-segment-button value="Tank">
+      Tank
+    </ion-segment-button>
+    <ion-segment-button value="Swerve">
+      Swerve
+    </ion-segment-button>
+    <ion-segment-button value="Mecanum">
+      Mecanum
+    </ion-segment-button>
+    <ion-segment-button value="Other">
+      Other
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-title> <p align="left">Climber Type</p></ion-title>
+  <ion-segment [(ngModel)]="pitClimberType" color="primary" (ionChange)="climberTypeChanged($event)">
+    <ion-segment-button value="Passive">
+      Passive
+    </ion-segment-button>
+    <ion-segment-button value="None">
+      None
+    </ion-segment-button>
+    <ion-segment-button value="A: Lifter">
+      A: Lifter
+    </ion-segment-button>
+    <ion-segment-button value="A: Passive">
+      A: Passive
+    </ion-segment-button>
+    <ion-segment-button value="Independent">
+      Independent
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-title> <p align="left">Drive Test</p></ion-title>
+  <ion-segment [(ngModel)]="pitDriveTest" color="primary" (ionChange)="driveTestChanged($event)">
+    <ion-segment-button value="Claimed">
+      Claimed
+    </ion-segment-button>
+    <ion-segment-button value="Succeeded">
+      Succeeded
+    </ion-segment-button>
+    <ion-segment-button value="Failed">
+      Failed
+    </ion-segment-button>
+    <ion-segment-button value="Did Not Ask">
+      Did Not Ask
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-item>
+   <ion-label>Has Camera</ion-label>
+   <ion-toggle [(ngModel)]="pitHasCamera" (ionChange)="hasCameraSwitch()"></ion-toggle>
+  </ion-item>
+
+  <ion-item>
+   <ion-label>Can do PID</ion-label>
+   <ion-toggle [(ngModel)]="pitCanDoPID" (ionChange)="canDoPIDSwitch($event)"></ion-toggle>
+ </ion-item>
+
+ <ion-item>
+  <ion-label>Has Gyro</ion-label>
+  <ion-toggle [(ngModel)]="pitHasGyro" (ionChange)="hasGyroSwitch($event)"></ion-toggle>
+ </ion-item>
+
+ <ion-item>
+  <ion-label>Has Encoders</ion-label>
+  <ion-toggle [(ngModel)]="pitHasEncoders" (ionChange)="hasEncodersSwitch($event)"></ion-toggle>
+ </ion-item>
+
+ <ion-title> <p align="left">SEALs Notes</p>
+ </ion-title>
+ <ion-item>
+    <ion-textarea [(ngModel)]="pitSEALsNotes" placeholder="Miscellaneous Notes: climber notes, autos, etc." (ionChange)="notesChanged($event)"></ion-textarea>
+  </ion-item>
+
+</ion-content>
