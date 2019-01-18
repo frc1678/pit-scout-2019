@@ -7,16 +7,24 @@ import { AngularFireDatabase } from 'angularfire2/database';
   templateUrl: 'info.html',
 })
 export class InfoPage {
-  pitAvailableWeight: Number;
+  pitWeight: Number;
   pitRobotWidth: Number;
   pitRobotLength: Number;
+  pitRobotMinHeight: Number;
+  pitRobotMaxHeight: Number;
   pitWheelDiameter: String;
   pitProgrammingLanguage: String;
   pitDriveTrain: String;
-  pitClimberType: String;
-  pitDriveTest: String;
+  pitSandStorm: String;
+  pitClimbType: Map<String,Number>; // Maps https://stackoverflow.com/questions/37699320/iterating-over-typescript-map
+  pitSelf: Number;
+  pitRobot1: Number;
+  pitRobot2: Number;
   pitHasCamera: boolean;
-  pitCanDoPID: boolean;
+  pitHasVision: boolean;
+  pitCanBuddyStartLevel2: boolean;
+  pitHasOrangeShooter: boolean;
+  pitHasPid: boolean;
   pitHasGyro: boolean;
   pitHasEncoders: boolean;
   pitSEALsNotes: String;
@@ -27,16 +35,24 @@ export class InfoPage {
     ) {
   }
 
-  availableWeightChanged() {
-    console.log('Weight: ' + this.pitAvailableWeight)
+  weightChanged() {
+    console.log('weight: ' + this.pitWeight);
   }
 
   robotWidthChanged() {
-    console.log('Width: ' + this.pitRobotWidth)
+    console.log('width: ' + this.pitRobotWidth);
   }
 
   robotLengthChanged() {
-    console.log('Length: ' + this.pitRobotLength)
+    console.log('length: ' + this.pitRobotLength);
+  }
+
+  robotMinHeightChanged() {
+    console.log('minHeight: ' + this.pitRobotMinHeight);
+  }
+
+  robotMaxHeightChanged() {
+    console.log('maxHeight: ' + this.pitRobotMaxHeight);
   }
 
   wheelDiameterChanged() {
@@ -51,32 +67,72 @@ export class InfoPage {
     console.log('driveTrain: ' + this.pitDriveTrain);
   }
 
-  climberTypeChanged() {
-    console.log('climberType: ' + this.pitClimberType);
+  sandstormChanged() {
+    console.log('sandStorm: ' + this.pitSandStorm);
   }
 
-  driveTestChanged() {
-    console.log('driveTest: ' +this.pitDriveTest);
+  climberSelfHasChanged() {
+    console.log('pitSelf: ' + this.pitSelf);
+    this.climberTypeHasChanged();
+  }
+
+  climberRobot1HasChanged() {
+    console.log('Robot 1: ' + this.pitRobot1);
+    this.climberTypeHasChanged();
+  }
+
+  climberRobot2HasChanged() {
+    console.log('Robot 2: ' + this.pitRobot2);
+    this.climberTypeHasChanged();
+  }
+
+  climberTypeHasChanged() {
+    try {
+      this.pitClimbType.set('pitSelf',this.pitSelf)
+      this.pitClimbType.set('robot1',this.pitRobot1)
+      this.pitClimbType.set('robot2',this.pitRobot2)
+    }
+    catch {
+      this.pitClimbType = new Map();
+      this.pitClimbType.set('pitSelf',this.pitSelf)
+      this.pitClimbType.set('robot1',this.pitRobot1)
+      this.pitClimbType.set('robot2',this.pitRobot2)
+    }
+
+    for (const key in this.pitClimbType) {
+      console.log(key + ' ' + this.pitClimbType[key])
+    }
+  }
+
+  hasOrangeShooterSwitch() {
+    console.log('pitHasOrangeShooter: ' + this.pitHasOrangeShooter)
   }
 
   hasCameraSwitch() {
-    console.log("hasCamera: "+ this.pitHasCamera);
+    console.log('hasCamera: '+ this.pitHasCamera);
   }
 
-  canDoPIDSwitch() {
-    console.log("canDoPID: "+ this.pitCanDoPID);
+  hasVisionSwitch() {
+    console.log('hasVision: '+ this.pitHasVision);
+  }
+  canBuddyStartLevel2Switch() {
+    console.log('canBuddyStartLevel2Switch: ' + this.pitCanBuddyStartLevel2);
+  }
+
+  hasPIDSwitch() {
+    console.log('hasPid: '+ this.pitHasPid);
   }
 
   hasGyroSwitch() {
-    console.log("hasGyro: "+ this.pitHasGyro);
+    console.log('hasGyro: '+ this.pitHasGyro);
   }
 
   hasEncodersSwitch() {
-    console.log("hasEncoders: "+ this.pitHasEncoders);
+    console.log('hasEncoders: '+ this.pitHasEncoders);
   }
 
   notesChanged() {
-    console.log('Notes: ' + this.pitSEALsNotes)
+    console.log('Notes: ' + this.pitSEALsNotes);
   }
 
   ionViewDidLoad() {
