@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, SegmentButton, ActionSheetController } from 'ionic-angular';
+import {  NavController, NavParams, SegmentButton, ActionSheetController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
-@IonicPage()
 @Component({
   selector: 'page-info',
   templateUrl: 'info.html',

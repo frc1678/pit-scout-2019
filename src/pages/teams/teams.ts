@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, AlertController, NavParams, ActionSheetController } from 'ionic-angular';
+import { NavController, AlertController, NavParams, ActionSheetController } from 'ionic-angular';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Rx';
 import { InfoPage } from '../info/info';
 
-@IonicPage()
 @Component({
   selector: 'page-teams',
   templateUrl: 'teams.html',
