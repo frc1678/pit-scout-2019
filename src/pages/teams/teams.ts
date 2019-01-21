@@ -24,9 +24,12 @@ export class TeamsPage {
     this.fb = firebase;
   }
 
-  goToInfoPage() {
-    console.log("go to InfoPage")
-    this.navCtrl.push(InfoPage);
+  goToInfoPage(num,name) {
+    console.log("go to InfoPage with team number " + num)
+    this.navCtrl.push(InfoPage,{
+      firebase:this.fb,
+      number:num
+    });
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad TeamsPage');

@@ -15,12 +15,12 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyBxafDl5sKDcNDqouUH_u-FJKCwpIOV22U",
-  authDomain: "scouting-chezy-2018.firebaseapp.com",
-  databaseURL: "https://scouting-chezy-2018.firebaseio.com",
-  projectId: "scouting-chezy-2018",
-  storageBucket: "scouting-chezy-2018.appspot.com",
-  messagingSenderId: "213321699153"
+  apiKey: "AIzaSyAmukE8omYPSTm0Y7Ex5jZoBuUAnS8CE7o",
+  authDomain: "dev-1-2019.firebaseapp.com",
+  databaseURL: "https://dev-1-2019.firebaseio.com",
+  projectId: "dev-1-2019",
+  storageBucket: "dev-1-2019.appspot.com",
+  messagingSenderId: "430779624782"
 };
 
 @NgModule({
