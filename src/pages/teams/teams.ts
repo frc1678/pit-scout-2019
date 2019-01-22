@@ -28,7 +28,8 @@ export class TeamsPage {
     console.log("go to InfoPage with team number " + num)
     this.navCtrl.push(InfoPage,{
       firebase:this.fb,
-      number:num
+      number:num,
+      name:name
     });
   }
   ionViewDidLoad() {

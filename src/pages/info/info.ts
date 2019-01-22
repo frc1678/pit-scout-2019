@@ -29,6 +29,7 @@ export class InfoPage {
   pitSEALsNotes: String;
   fb: AngularFireDatabase;
   number: Number;
+  name: String;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -36,6 +37,7 @@ export class InfoPage {
     ) {
       this.fb = navParams.get('firebase')
       this.number = navParams.get('number')
+      this.name = navParams.get('name')
       //Time to get some data! ... later
   }
 
