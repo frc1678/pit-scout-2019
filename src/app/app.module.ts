@@ -23,6 +23,12 @@ export const firebaseConfig = {
   messagingSenderId: "430779624782"
 };
 
+/* https://www.joshmorony.com/hosting-an-ionic-pwa-with-firebase-hosting/
+  Steps to uploading pit scout to firebase in link
+  Never overwrite the index.html file, it will overwrite
+  the app to direct to instructions for firebase hosting
+*/
+
 @NgModule({
   declarations: [
     MyApp,
