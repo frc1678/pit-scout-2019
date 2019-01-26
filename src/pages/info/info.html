@@ -14,32 +14,32 @@
 
 
 <ion-content padding>
-  <!––pitWeight-->
+  <!--pitWeight-->
   <ion-item>
     <ion-label color="primary" fixed>Pit Weight</ion-label>
-    <ion-input [(ngModel)]="pitWeight" placeholder="Weight" (ionChange)="weightChanged($event)"></ion-input>
+    <ion-input [(ngModel)]="pitWeight" placeholder="Robot Weight" (ionChange)="weightChanged($event)"></ion-input>
   </ion-item>
 
-  <!––pitRobotWidth-->
+  <!--pitRobotWidth-->
   <ion-item>
     <ion-label color="primary" fixed>Robot Width</ion-label>
     <ion-input [(ngModel)]="pitRobotWidth" placeholder="Robot Width" (ionChange)="robotWidthChanged($event)"></ion-input>
   </ion-item>
 
 
-  <!––pitRobotLength-->
+  <!--pitRobotLength-->
   <ion-item>
     <ion-label color="primary" fixed>Robot Length</ion-label>
     <ion-input [(ngModel)]="pitRobotLength" placeholder="Robot Length" (ionChange)="robotLengthChanged($event)"></ion-input>
   </ion-item>
 
-  <!––pitRobotMinHeight-->
+  <!--pitRobotMinHeight-->
   <ion-item>
     <ion-label color="primary" fixed>Min Height</ion-label>
     <ion-input [(ngModel)]="pitRobotMinHeight" placeholder="Min Height" (ionChange)="robotMinHeightChanged($event)"></ion-input>
   </ion-item>
 
-  <!––pitRobotMaxHeight-->
+  <!--pitRobotMaxHeight-->
   <ion-item>
     <ion-label color="primary" fixed>Max Height</ion-label>
     <ion-input [(ngModel)]="pitRobotMaxHeight" placeholder="Max Height" (ionChange)="robotMaxHeightChanged($event)"></ion-input>
@@ -75,7 +75,7 @@
   </ion-segment>
 
   <ion-title> <p align="left">Drive Train</p></ion-title>
-  <ion-segment [(ngModel)]="pitDriveTrain" color="primary" (ionChange)="driveTrainChanged($event)">
+  <ion-segment [(ngModel)]="pitDrivetrain" color="primary" (ionChange)="driveTrainChanged($event)">
     <ion-segment-button value="Tank">
       Tank
     </ion-segment-button>
@@ -92,7 +92,7 @@
 
 
   <ion-title> <p align="left">SandStorm</p></ion-title>
-  <ion-segment [(ngModel)]="pitSandStorm" color="primary" (ionChange)="sandstormChanged($event)">
+  <ion-segment [(ngModel)]="pitSandstormNavigationType" color="primary" (ionChange)="sandstormChanged($event)">
     <ion-segment-button value="Vision">
       Vision
     </ion-segment-button>
