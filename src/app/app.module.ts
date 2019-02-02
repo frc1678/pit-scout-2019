@@ -14,6 +14,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
+import { IonicStorageModule } from '@ionic/storage';
+
 export const firebaseConfig = {
   apiKey: "AIzaSyAmukE8omYPSTm0Y7Ex5jZoBuUAnS8CE7o",
   authDomain: "dev-1-2019.firebaseapp.com",
@@ -40,6 +42,7 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule
   ],
