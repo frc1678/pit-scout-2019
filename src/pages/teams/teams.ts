@@ -14,6 +14,10 @@ export class TeamsPage {
   teamsList: AngularFireList<any>;
   teams: Observable<any[]>;
   fb: AngularFireDatabase;
+  datafield: string;
+  val_search: string;
+  vals: any[];
+  display_teams: any[];
   storage: Storage;
 
   constructor(public navCtrl: NavController,
@@ -26,6 +30,50 @@ export class TeamsPage {
     this.teams = this.teamsList.valueChanges();
     this.fb = firebase;
     this.storage = storage;
+    this.datafieldChanged()
+  }
+
+  datafieldChanged() {
+    console.log(this.datafield)
+    var vals = ['Null']
+    var tempteams = []
+    this.teams.forEach(teamlist => {
+      for (var team of teamlist) {
+        if (!(vals.indexOf(team[this.datafield]) > 0) && team[this.datafield] != undefined) {
+          vals.push(team[this.datafield])
+        }
+        if (team[this.datafield] == undefined) {
+          tempteams.push(team)
+        }
+      }
+      this.vals = vals.sort((n1,n2)=>(+n1)-(+n2));
+      this.val_search = "Null"
+      this.display_teams = tempteams
+    })
+  }
+
+  valueChanged() {
+    var tempteams = []
+    if (this.val_search != "Null") {
+      this.teams.forEach(teamlist => {
+        for (var team of teamlist) {
+          console.log(team[this.datafield])
+          if (team[this.datafield] == this.val_search) {
+            tempteams.push(team)
+          }
+        }
+        this.display_teams = tempteams
+      })
+    } else {
+      this.teams.forEach(teamlist => {
+        for (var team of teamlist) {
+          if (team[this.datafield] == undefined) {
+            tempteams.push(team)
+          }
+        }
+        this.display_teams = tempteams
+      })
+    }
   }
 
   //Stores teams when called in ionViewDidLoad

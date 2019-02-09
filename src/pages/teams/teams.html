@@ -14,13 +14,35 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-
+  <ion-item>
+    <ion-select [(ngModel)]="datafield" placeholder="Select One" (ionChange)="datafieldChanged()">
+      <ion-option value="none" selected="true">No Filter</ion-option>
+      <ion-option value="pitWeight">Robot Weight</ion-option>
+      <ion-option value="pitRobotWidth">Robot Width</ion-option>
+      <ion-option value="pitRobotLength">Robot Length</ion-option>
+      <ion-option value="pitRobotMinHeight">Min Height</ion-option>
+      <ion-option value="pitRobotMaxHeight">Max Height</ion-option>
+      <ion-option value="pitWheelDiameter">Wheel Diameter</ion-option>
+      <ion-option value="pitProgrammingLanguage">Programming Language</ion-option>
+      <ion-option value="pitSandstormNavigationType">Sandstorm Navigation</ion-option>
+      <ion-option value="pitHasCamera">Has Camera</ion-option>
+      <ion-option value="pitHasVision">Has Vision</ion-option>
+      <ion-option value="pitCanBuddyStartLevel2">Can Buddy Start Level 2</ion-option>
+      <ion-option value="pitHasOrangeShooter">Has Cargo Shooter</ion-option>
+      <ion-option value="pitHasGyro">Has Gyro</ion-option>
+      <ion-option value="pitHasEncoders">Has Encoders</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-select [(ngModel)]="val_search" placeholder="Select One" (ionChange)="valueChanged()">
+       <ion-option *ngFor="let item of vals" [value]="item">{{item}}</ion-option>
+    </ion-select>
+  </ion-item>
 </ion-header>
-
 
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let team of teams | async" (click)="goToInfoPage(team.number, team.name)">
+    <ion-item *ngFor="let team of display_teams" (click)="goToInfoPage(team.number, team.name)">
       {{team.number}} - {{team.name}}
     </ion-item>
   </ion-list>

@@ -5,8 +5,6 @@ import { MyApp } from './app.component';
 
 import { InfoPage } from '../pages/info/info';
 import { TeamsPage } from '../pages/teams/teams';
-import { NullPage } from '../pages/null/null';
-import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -36,8 +34,6 @@ export const firebaseConfig = {
     MyApp,
     InfoPage,
     TeamsPage,
-    NullPage,
-    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -51,8 +47,6 @@ export const firebaseConfig = {
     MyApp,
     InfoPage,
     TeamsPage,
-    NullPage,
-    TabsPage
   ],
   providers: [
     StatusBar,
