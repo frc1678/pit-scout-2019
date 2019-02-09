@@ -53,6 +53,7 @@ export class InfoPage {
   pitSEALsNotesObserve: Observable<any>;
   name: String;
   storage: Storage;
+  pitDataKeys: string[];
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -62,87 +63,39 @@ export class InfoPage {
       this.number = navParams.get('number')
       this.name = navParams.get('name')
       this.storage = navParams.get('storage')
-      this.pitWeightObserve = this.fb.object('Teams/'+this.number.toString()+'/pitWeight/').valueChanges()
-      let subWeight = this.pitWeightObserve.subscribe(
-        value => {
-          this.pitWeight = value
-          this.storage.set(''+this.number+'/pitWeight',value)
-        },
-        error => console.log('ERROR: ' + error),
-        () => console.log('pitWeight retrieved')
-      )
-      this.pitRobotWidthObserve = this.fb.object('Teams/'+this.number.toString()+'/pitRobotWidth/').valueChanges()
-      let subWidth = this.pitRobotWidthObserve.subscribe(
-        value => {
-          this.pitRobotWidth = value
-          this.storage.set(''+this.number+'/pitRobotWidth',value)
-        },
-        error => console.log('ERROR: ' + error),
-        () => console.log('pitRobotWidth retrieved')
-      )
-      this.pitRobotLengthObserve = this.fb.object('Teams/'+this.number.toString()+'/pitRobotLength/').valueChanges()
-      let subLength = this.pitRobotLengthObserve.subscribe(
-        value => {
-          this.pitRobotLength = value
-          this.storage.set(''+this.number+'/pitRobotLength',value)
-        },
-        error => console.log('ERROR: ' + error),
-        () => console.log('pitRobotLength retrieved')
-      )
-      this.pitRobotMinHeightObserve = this.fb.object('Teams/'+this.number.toString()+'/pitRobotMinHeight/').valueChanges()
-      let subMinHeight = this.pitRobotMinHeightObserve.subscribe(
-        value => {
-          this.pitRobotMinHeight = value
-          this.storage.set(''+this.number+'/pitRobotMinHeight',value)
-        },
-        error => console.log('ERROR: ' + error),
-        () => console.log('pitRobotMinHeight retrieved')
-      )
-      this.pitRobotMaxHeightObserve = this.fb.object('Teams/'+this.number.toString()+'/pitRobotMaxHeight/').valueChanges()
-      let subMaxHeight = this.pitRobotMaxHeightObserve.subscribe(
-        value => {
-          this.pitRobotMaxHeight = value
-          this.storage.set(''+this.number+'/pitRobotMaxHeight',value)
-        },
-        error => console.log('ERROR: ' + error),
-        () => console.log('pitRobotMaxHeight retrieved')
-      )
-      this.pitWheelDiameterObserve = this.fb.object('Teams/'+this.number.toString()+'/pitWheelDiameter/').valueChanges()
-      let subWheelDiameter = this.pitWheelDiameterObserve.subscribe(
-        value => {
-          this.pitWheelDiameter = value
-          this.storage.set(''+this.number+'/pitWheelDiameter',value)
-        },
-        error => console.log('ERROR: ' + error),
-        () => console.log('pitWheelDiameter retrieved')
-      )
-      this.pitProgrammingLanguageObserve = this.fb.object('Teams/'+this.number.toString()+'/pitProgrammingLanguage/').valueChanges()
-      let subProgrammingLanguage = this.pitProgrammingLanguageObserve.subscribe(
-        value => {
-          this.pitProgrammingLanguage = value
-          this.storage.set(''+this.number+'/pitProgrammingLanguage',value)
-        },
-        error => console.log('ERROR: ' + error),
-        () => console.log('pitProgrammingLanguage retrieved')
-      )
-      this.pitDrivetrainObserve = this.fb.object('Teams/'+this.number.toString()+'/pitDrivetrain/').valueChanges()
-      let subDrivetrain = this.pitDrivetrainObserve.subscribe(
-        value => {
-          this.pitDrivetrain = value
-          this.storage.set(''+this.number+'/pitDrivetrain',value)
-        },
-        error => console.log('ERROR: ' + error),
-        () => console.log('pitDrivetrain retrieved')
-      )
-      this.pitSandstormNavigationTypeObserve = this.fb.object('Teams/'+this.number.toString()+'/pitSandstormNavigationType/').valueChanges()
-      let subSandstormNavigationType = this.pitSandstormNavigationTypeObserve.subscribe(
-        value => {
-          this.pitSandstormNavigationType = value
-          this.storage.set(''+this.number+'/pitSandstormNavigationType',value)
-        },
-        error => console.log('ERROR: ' + error),
-        () => console.log('pitSandstormNavigationType retrieved')
-      )
+      this.pitDataKeys = ['pitWeight',
+      'pitRobotWidth',
+      'pitRobotLength',
+      'pitRobotMinHeight',
+      'pitRobotMaxHeight',
+      'pitWheelDiameter',
+      'pitProgrammingLanguage',
+      'pitDrivetrain',
+      'pitSandstormNavigationType',
+      'pitHasCamera',
+      'pitHasVision',
+      'pitCanBuddyStartLevel2',
+      'pitHasOrangeShooter',
+      'pitHasPid',
+      'pitHasGyro',
+      'pitHasEncoders',
+      'pitSEALsNotes']
+
+        for (var i = 0; i < this.pitDataKeys.length; i++) {
+          this[this.pitDataKeys[i] + 'Observe'] = this.fb.object('Teams/' + this.number.toString() + '/' + this.pitDataKeys[i] + '/').valueChanges()
+          let ii = i
+          let subValue = this[this.pitDataKeys[ii]+'Observe'].subscribe(
+            value => {
+              this[this.pitDataKeys[ii]] = value
+              console.log('i: ' + ii)
+              console.log(this.pitDataKeys[ii] + ':' + value)
+              this.storage.set('' + this.number + '/' + this.pitDataKeys[ii],value)
+            },
+            error => console.log('ERROR: ' + error),
+            () => console.log(this.pitDataKeys[ii] + ' retrieved')
+          )
+        }
+
       this.pitSelfObserve = this.fb.object('Teams/'+this.number.toString()+'/pitClimbType/self').valueChanges()
       let subSelf = this.pitSelfObserve.subscribe(
         value => {
@@ -182,79 +135,7 @@ export class InfoPage {
         error => console.log('ERROR: ' + error),
         () => this.climberTypeHasChanged()
       )
-      this.pitHasCameraObserve = this.fb.object('Teams/'+this.number.toString()+'/pitHasCamera/').valueChanges()
-      let subHasCamera = this.pitHasCameraObserve.subscribe(
-        value => {
-          this.pitHasCamera = value
-          this.storage.set(''+this.number+'/pitHasCamera',value)
-        },
-        error => console.log('ERROR: ' + error),
-        () => console.log('pitHasCamera retrieved')
-      )
-      this.pitHasVisionObserve = this.fb.object('Teams/'+this.number.toString()+'/pitHasVision/').valueChanges()
-      let subHasVision = this.pitHasVisionObserve.subscribe(
-        value => {
-          this.pitHasVision = value
-          this.storage.set(''+this.number+'/pitHasVision',value)
-        },
-        error => console.log('ERROR: ' + error),
-        () => console.log('pitHasVision retrieved')
-      )
-      this.pitCanBuddyStartLevel2Observe = this.fb.object('Teams/'+this.number.toString()+'/pitCanBuddyStartLevel2/').valueChanges()
-      let subCanBuddyStartLevel2 = this.pitCanBuddyStartLevel2Observe.subscribe(
-        value => {
-          this.pitCanBuddyStartLevel2 = value
-          this.storage.set(''+this.number+'/pitCanBuddyStartLevel2',value)
-        },
-        error => console.log('ERROR: ' + error),
-        () => console.log('pitCanBuddyStartLevel2 retrieved')
-      )
-      this.pitHasOrangeShooterObserve = this.fb.object('Teams/'+this.number.toString()+'/pitHasOrangeShooter/').valueChanges()
-      let subHasOrangeShooter = this.pitHasOrangeShooterObserve.subscribe(
-        value => {
-          this.pitHasOrangeShooter = value
-          this.storage.set(''+this.number+'/pitHasOrangeShooter',value)
-        },
-        error => console.log('ERROR: ' + error),
-        () => console.log('pitHasOrangeShooter retrieved')
-      )
-      this.pitHasPidObserve = this.fb.object('Teams/'+this.number.toString()+'/pitHasPid/').valueChanges()
-      let subHasPid = this.pitHasPidObserve.subscribe(
-        value => {
-          this.pitHasPid = value
-          this.storage.set(''+this.number+'/pitHasPid',value)
-        },
-        error => console.log('ERROR: ' + error),
-        () => console.log('pitHasPid retrieved')
-      )
-      this.pitHasGyroObserve = this.fb.object('Teams/'+this.number.toString()+'/pitHasGyro/').valueChanges()
-      let subHasGyro = this.pitHasGyroObserve.subscribe(
-        value => {
-          this.pitHasGyro = value
-          this.storage.set(''+this.number+'/pitHasGyro',value)
-        },
-        error => console.log('ERROR: ' + error),
-        () => console.log('pitHasGyro retrieved')
-      )
-      this.pitHasEncodersObserve = this.fb.object('Teams/'+this.number.toString()+'/pitHasEncoders/').valueChanges()
-      let subHasEncoders = this.pitHasEncodersObserve.subscribe(
-        value => {
-          this.pitHasEncoders = value
-          this.storage.set(''+this.number+'/pitHasEncoders',value)
-        },
-        error => console.log('ERROR: ' + error),
-        () => console.log('pitHasEncoders retrieved')
-      )
-      this.pitSEALsNotesObserve = this.fb.object('Teams/'+this.number.toString()+'/pitSEALsNotes/').valueChanges()
-      let subSEALsNotes = this.pitSEALsNotesObserve.subscribe(
-        value => {
-          this.pitSEALsNotes = value
-          this.storage.set(''+this.number+'/pitSEALsNotes',value)
-        },
-        error => console.log('ERROR: ' + error),
-        () => console.log('pitSEALsNotes retrieved')
-      )
-  }
+    }
 
   weightChanged() {
     console.log('weight: ' + this.pitWeight);
