@@ -25,7 +25,6 @@ export class InfoPage {
   pitHasVision: boolean;
   pitCanBuddyStartLevel2: boolean;
   pitHasOrangeShooter: boolean;
-  pitHasPid: boolean;
   pitHasGyro: boolean;
   pitHasEncoders: boolean;
   pitSEALsNotes: String;
@@ -47,7 +46,6 @@ export class InfoPage {
   pitHasVisionObserve: Observable<any>;
   pitCanBuddyStartLevel2Observe: Observable<any>;
   pitHasOrangeShooterObserve: Observable<any>;
-  pitHasPidObserve: Observable<any>;
   pitHasGyroObserve: Observable<any>;
   pitHasEncodersObserve: Observable<any>;
   pitSEALsNotesObserve: Observable<any>;
@@ -288,15 +286,6 @@ export class InfoPage {
     console.log('canBuddyStartLevel2Switch: ' + this.pitCanBuddyStartLevel2);
     try {
       this.fb.object('/Teams/'+this.number.toString()+"/pitCanBuddyStartLevel2").set(this.pitCanBuddyStartLevel2);
-    } catch(e) {
-      console.log(e)
-    }
-  }
-
-  hasPIDSwitch() {
-    console.log('hasPid: '+ this.pitHasPid);
-    try {
-      this.fb.object('/Teams/'+this.number.toString()+"/pitHasPid").set(this.pitHasPid);
     } catch(e) {
       console.log(e)
     }
