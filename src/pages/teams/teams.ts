@@ -133,7 +133,7 @@ export class TeamsPage {
           const newTeamRef = this.fb.object('/Teams/'+data.title);
           console.log(data)
           newTeamRef.set({
-            number: parseInt(data.title),
+            teamNumber: parseInt(data.title),
             name: data.name
           })
         }
