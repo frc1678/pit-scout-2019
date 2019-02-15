@@ -78,7 +78,7 @@ export class TeamsPage {
 
   //Stores teams when called in ionViewDidLoad
   storeTeam(team) {
-    this.storage.set(""+team.number,team)
+    this.storage.set(""+team.teamNumber,team)
   }
 
 
