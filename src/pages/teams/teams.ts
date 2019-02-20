@@ -131,10 +131,16 @@ export class TeamsPage {
         handler: data => {
           console.log(data.title)
           const newTeamRef = this.fb.object('/Teams/'+data.title);
-          console.log(data)
           newTeamRef.set({
             teamNumber: parseInt(data.title),
             name: data.name
+          })
+          var tempteams = []
+          this.teams.forEach(teamlist => {
+            for (var team of teamlist) {
+              tempteams.push(team)
+            }
+            this.display_teams = tempteams
           })
         }
       }
