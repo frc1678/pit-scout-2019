@@ -104,6 +104,22 @@
     </ion-segment-button>
   </ion-segment>
 
+  <ion-title> <p align="left">Ramp Ability</p></ion-title>
+  <ion-segment [(ngModel)]="pitRampAbility" color="primary" (ionChange)="rampAbilityChanged($event)">
+    <ion-segment-button value=0>
+      0
+    </ion-segment-button>
+    <ion-segment-button value=1>
+      1
+    </ion-segment-button>
+    <ion-segment-button value=2>
+      2
+    </ion-segment-button>
+    <ion-segment-button value=3>
+      3
+    </ion-segment-button>
+  </ion-segment>
+
   <ion-title> <p align="left">Climber Type</p></ion-title>
 
   <ion-label><p align="left">Self</p></ion-label>

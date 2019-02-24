@@ -17,6 +17,7 @@ export class InfoPage {
   pitProgrammingLanguage: String;
   pitDrivetrain: String;
   pitSandstormNavigationType: String;
+  pitRampAbility: String;
   pitClimbType: Map<String,Number>; // Maps https://stackoverflow.com/questions/37699320/iterating-over-typescript-map
   pitSelf: String;
   pitRobot1: String;
@@ -39,6 +40,7 @@ export class InfoPage {
   pitProgrammingLanguageObserve: Observable<any>;
   pitDrivetrainObserve: Observable<any>;
   pitSandstormNavigationTypeObserve: Observable<any>;
+  pitRampAbilityObserve: Observable<any>;
   pitSelfObserve: Observable<any>;
   pitRobot1Observe: Observable<any>;
   pitRobot2Observe: Observable<any>;
@@ -93,7 +95,15 @@ export class InfoPage {
             () => console.log(this.pitDataKeys[ii] + ' retrieved')
           )
         }
-
+        this.pitRampAbilityObserve = this.fb.object('Teams/'+this.number.toString()+'/pitRampAbility').valueChanges()
+        let subRampAbility = this.pitRampAbilityObserve.subscribe(
+          value => {
+            this.pitRampAbility = ""+value
+            this.storage.set(''+this.number+'/pitRampAbility',this.pitRampAbility)
+          },
+          error => console.log('ERROR: ' + error),
+          () => this.climberTypeHasChanged()
+        )
       this.pitSelfObserve = this.fb.object('Teams/'+this.number.toString()+'/pitClimbType/self').valueChanges()
       let subSelf = this.pitSelfObserve.subscribe(
         value => {
@@ -211,6 +221,15 @@ export class InfoPage {
     console.log('sandStorm: ' + this.pitSandstormNavigationType);
     try {
       this.fb.object('/Teams/'+this.number.toString()+"/pitSandstormNavigationType").set(this.pitSandstormNavigationType);
+    } catch(e) {
+      console.log(e)
+    }
+  }
+
+  rampAbilityChanged() {
+    console.log('rampAbility:' + this.pitRampAbility);
+    try {
+      this.fb.object('/Teams/'+this.number.toString()+"/pitRampAbility").set(Number(this.pitRampAbility));
     } catch(e) {
       console.log(e)
     }
