@@ -16,33 +16,33 @@
 <ion-content padding>
   <!--pitWeight-->
   <ion-item>
-    <ion-label color="primary" fixed>Pit Weight</ion-label>
-    <ion-input type="number" pattern="[0-9]*" [(ngModel)]="pitWeight" placeholder="Weight" (ionChange)="weightChanged($event)"></ion-input>
+    <ion-label color="primary" fixed>Robot Weight</ion-label>
+    <ion-input type="number" pattern="[0-9]*" [(ngModel)]="pitWeight" placeholder="Pounds" (ionChange)="weightChanged($event)"></ion-input>
   </ion-item>
 
   <!--pitRobotWidth-->
   <ion-item>
     <ion-label color="primary" fixed>Robot Width</ion-label>
-    <ion-input type="number" pattern="[0-9]*" [(ngModel)]="pitRobotWidth" placeholder="Robot Width" (ionChange)="robotWidthChanged($event)"></ion-input>
+    <ion-input type="number" pattern="[0-9]*" [(ngModel)]="pitRobotWidth" placeholder="Inches" (ionChange)="robotWidthChanged($event)"></ion-input>
   </ion-item>
 
 
   <!--pitRobotLength-->
   <ion-item>
     <ion-label color="primary" fixed>Robot Length</ion-label>
-    <ion-input type="number" pattern="[0-9]*" [(ngModel)]="pitRobotLength" placeholder="Robot Length" (ionChange)="robotLengthChanged($event)"></ion-input>
+    <ion-input type="number" pattern="[0-9]*" [(ngModel)]="pitRobotLength" placeholder="Inches" (ionChange)="robotLengthChanged($event)"></ion-input>
   </ion-item>
 
   <!--pitRobotMinHeight-->
   <ion-item>
     <ion-label color="primary" fixed>Min Height</ion-label>
-    <ion-input type="number" pattern="[0-9]*" [(ngModel)]="pitRobotMinHeight" placeholder="Min Height" (ionChange)="robotMinHeightChanged($event)"></ion-input>
+    <ion-input type="number" pattern="[0-9]*" [(ngModel)]="pitRobotMinHeight" placeholder="Inches" (ionChange)="robotMinHeightChanged($event)"></ion-input>
   </ion-item>
 
   <!--pitRobotMaxHeight-->
   <ion-item>
     <ion-label color="primary" fixed>Max Height</ion-label>
-    <ion-input type="number" pattern="[0-9]*" [(ngModel)]="pitRobotMaxHeight" placeholder="Max Height" (ionChange)="robotMaxHeightChanged($event)"></ion-input>
+    <ion-input type="number" pattern="[0-9]*" [(ngModel)]="pitRobotMaxHeight" placeholder="Inches" (ionChange)="robotMaxHeightChanged($event)"></ion-input>
   </ion-item>
 
   <ion-title> <p align="left">Wheel Diameter</p></ion-title>
