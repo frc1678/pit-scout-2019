@@ -105,6 +105,18 @@ export class TeamsPage {
     })
   }
 
+  ionViewWillEnter() {
+    this.datafieldChanged();
+    this.valueChanged();
+    var tempteams = []
+    this.teams.forEach(teamlist => {
+      for (var team of teamlist) {
+        tempteams.push(team)
+      }
+      this.display_teams = tempteams
+    })
+  }
+
   addTeam(){
     let prompt = this.alertCtrl.create({
       title: 'New Team',
