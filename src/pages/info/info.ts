@@ -11,17 +11,16 @@ export class InfoPage {
   pitWeight: Number;
   pitRobotWidth: Number;
   pitRobotLength: Number;
-  pitRobotMinHeight: Number;
-  pitRobotMaxHeight: Number;
   pitWheelDiameter: String;
   pitProgrammingLanguage: String;
   pitDrivetrain: String;
   pitSandstormNavigationType: String;
-  pitRampAbility: String;
+  pitSEALsRampRanking: String;
   pitClimbType: Map<String,Number>; // Maps https://stackoverflow.com/questions/37699320/iterating-over-typescript-map
   pitSelf: String;
   pitRobot1: String;
   pitRobot2: String;
+  pitIsLemonSpecialist: boolean;
   pitHasCamera: boolean;
   pitHasVision: boolean;
   pitCanBuddyStartLevel2: boolean;
@@ -34,16 +33,15 @@ export class InfoPage {
   pitWeightObserve: Observable<any>;
   pitRobotWidthObserve: Observable<any>;
   pitRobotLengthObserve: Observable<any>;
-  pitRobotMinHeightObserve: Observable<any>;
-  pitRobotMaxHeightObserve: Observable<any>;
   pitWheelDiameterObserve: Observable<any>;
   pitProgrammingLanguageObserve: Observable<any>;
   pitDrivetrainObserve: Observable<any>;
   pitSandstormNavigationTypeObserve: Observable<any>;
-  pitRampAbilityObserve: Observable<any>;
+  pitSEALsRampRankingObserve: Observable<any>;
   pitSelfObserve: Observable<any>;
   pitRobot1Observe: Observable<any>;
   pitRobot2Observe: Observable<any>;
+  pitIsLemonSpecialistObserve: Observable<any>;
   pitHasCameraObserve: Observable<any>;
   pitHasVisionObserve: Observable<any>;
   pitCanBuddyStartLevel2Observe: Observable<any>;
@@ -66,12 +64,11 @@ export class InfoPage {
       this.pitDataKeys = ['pitWeight',
       'pitRobotWidth',
       'pitRobotLength',
-      'pitRobotMinHeight',
-      'pitRobotMaxHeight',
       'pitWheelDiameter',
       'pitProgrammingLanguage',
       'pitDrivetrain',
       'pitSandstormNavigationType',
+      'pitIsLemonSpecialist',
       'pitHasCamera',
       'pitHasVision',
       'pitCanBuddyStartLevel2',
@@ -95,11 +92,12 @@ export class InfoPage {
             () => console.log(this.pitDataKeys[ii] + ' retrieved')
           )
         }
-        this.pitRampAbilityObserve = this.fb.object('Teams/'+this.number.toString()+'/pitRampAbility').valueChanges()
-        let subRampAbility = this.pitRampAbilityObserve.subscribe(
+
+        this.pitSEALsRampRankingObserve = this.fb.object('Teams/'+this.number.toString()+'/pitSEALsRampRanking').valueChanges()
+        let subRampRanking = this.pitSEALsRampRankingObserve.subscribe(
           value => {
-            this.pitRampAbility = ""+value
-            this.storage.set(''+this.number+'/pitRampAbility',this.pitRampAbility)
+            this.pitSEALsRampRanking = ""+value
+            this.storage.set(''+this.number+'/pitSEALsRampRanking',this.pitSEALsRampRanking)
           },
           error => console.log('ERROR: ' + error),
           () => this.climberTypeHasChanged()
@@ -172,24 +170,6 @@ export class InfoPage {
     }
   }
 
-  robotMinHeightChanged() {
-    console.log('minHeight: ' + this.pitRobotMinHeight);
-    try {
-      this.fb.object('/Teams/'+this.number.toString()+"/pitRobotMinHeight").set(+this.pitRobotMinHeight);
-    } catch(e) {
-      console.log(e)
-    }
-  }
-
-  robotMaxHeightChanged() {
-    console.log('maxHeight: ' + this.pitRobotMaxHeight);
-    try {
-      this.fb.object('/Teams/'+this.number.toString()+"/pitRobotMaxHeight").set(+this.pitRobotMaxHeight);
-    } catch(e) {
-      console.log(e)
-    }
-  }
-
   wheelDiameterChanged() {
     console.log('wheelDiameter: ' + this.pitWheelDiameter);
     try {
@@ -221,15 +201,6 @@ export class InfoPage {
     console.log('sandStorm: ' + this.pitSandstormNavigationType);
     try {
       this.fb.object('/Teams/'+this.number.toString()+"/pitSandstormNavigationType").set(this.pitSandstormNavigationType);
-    } catch(e) {
-      console.log(e)
-    }
-  }
-
-  rampAbilityChanged() {
-    console.log('rampAbility:' + this.pitRampAbility);
-    try {
-      this.fb.object('/Teams/'+this.number.toString()+"/pitRampAbility").set(Number(this.pitRampAbility));
     } catch(e) {
       console.log(e)
     }
@@ -284,6 +255,15 @@ export class InfoPage {
     }
   }
 
+  isLemonSpecialist() {
+    console.log('isLemonSpecialist: '+ this.pitIsLemonSpecialist);
+    try {
+      this.fb.object('/Teams/'+this.number.toString()+"/pitIsLemonSpecialist").set(this.pitIsLemonSpecialist);
+    } catch(e) {
+      console.log(e)
+    }
+  }
+
   hasCameraSwitch() {
     console.log('hasCamera: '+ this.pitHasCamera);
     try {
@@ -323,6 +303,15 @@ export class InfoPage {
     console.log('hasEncoders: '+ this.pitHasEncoders);
     try {
       this.fb.object('/Teams/'+this.number.toString()+"/pitHasEncoders").set(this.pitHasEncoders);
+    } catch(e) {
+      console.log(e)
+    }
+  }
+
+  rampAbilityChanged() {
+    console.log('rampRanking:' + this.pitSEALsRampRanking);
+    try {
+      this.fb.object('/Teams/'+this.number.toString()+"/pitSEALsRampRanking").set(Number(this.pitSEALsRampRanking));
     } catch(e) {
       console.log(e)
     }

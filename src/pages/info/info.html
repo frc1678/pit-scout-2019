@@ -33,19 +33,7 @@
     <ion-input type="number" pattern="[0-9]*" [(ngModel)]="pitRobotLength" placeholder="Inches" (ionChange)="robotLengthChanged($event)"></ion-input>
   </ion-item>
 
-  <!--pitRobotMinHeight-->
-  <ion-item>
-    <ion-label color="primary" fixed>Min Height</ion-label>
-    <ion-input type="number" pattern="[0-9]*" [(ngModel)]="pitRobotMinHeight" placeholder="Inches" (ionChange)="robotMinHeightChanged($event)"></ion-input>
-  </ion-item>
-
-  <!--pitRobotMaxHeight-->
-  <ion-item>
-    <ion-label color="primary" fixed>Max Height</ion-label>
-    <ion-input type="number" pattern="[0-9]*" [(ngModel)]="pitRobotMaxHeight" placeholder="Inches" (ionChange)="robotMaxHeightChanged($event)"></ion-input>
-  </ion-item>
-
-  <ion-title> <p align="left">Wheel Diameter</p></ion-title>
+  <ion-label> <p align="left">Wheel Diameter</p></ion-label>
   <ion-segment [(ngModel)]="pitWheelDiameter" color="primary" (ionChange)="wheelDiameterChanged($event)">
     <ion-segment-button value="4 Inches">
       4 Inches
@@ -58,7 +46,7 @@
     </ion-segment-button>
   </ion-segment>
 
-  <ion-title> <p align="left">Programming Language</p></ion-title>
+  <ion-label> <p align="left">Programming Language</p></ion-label>
   <ion-segment [(ngModel)]="pitProgrammingLanguage" color="primary" (ionChange)="programmingLanguageChanged($event)">
     <ion-segment-button value="Java">
       Java
@@ -74,7 +62,7 @@
     </ion-segment-button>
   </ion-segment>
 
-  <ion-title> <p align="left">Drive Train</p></ion-title>
+  <ion-label> <p align="left">Drive Train</p></ion-label>
   <ion-segment [(ngModel)]="pitDrivetrain" color="primary" (ionChange)="driveTrainChanged($event)">
     <ion-segment-button value="Tank">
       Tank
@@ -91,7 +79,7 @@
   </ion-segment>
 
 
-  <ion-title> <p align="left">SandStorm</p></ion-title>
+  <ion-label> <p align="left">SandStorm</p></ion-label>
   <ion-segment [(ngModel)]="pitSandstormNavigationType" color="primary" (ionChange)="sandstormChanged($event)">
     <ion-segment-button value="Vision">
       Vision
@@ -104,71 +92,10 @@
     </ion-segment-button>
   </ion-segment>
 
-  <ion-title> <p align="left">Ramp Ability</p></ion-title>
-  <ion-segment [(ngModel)]="pitRampAbility" color="primary" (ionChange)="rampAbilityChanged($event)">
-    <ion-segment-button value=0>
-      0
-    </ion-segment-button>
-    <ion-segment-button value=1>
-      1
-    </ion-segment-button>
-    <ion-segment-button value=2>
-      2
-    </ion-segment-button>
-    <ion-segment-button value=3>
-      3
-    </ion-segment-button>
-  </ion-segment>
-
-  <ion-title> <p align="left">Climber Type</p></ion-title>
-
-  <ion-label><p align="left">Self</p></ion-label>
-  <ion-segment [(ngModel)]="pitSelf" color="primary" (ionChange)="climberSelfHasChanged($event)">
-    <ion-segment-button value=0>
-      0
-    </ion-segment-button>
-    <ion-segment-button value=1>
-      1
-    </ion-segment-button>
-    <ion-segment-button value=2>
-      2
-    </ion-segment-button>
-    <ion-segment-button value=3>
-      3
-    </ion-segment-button>
-  </ion-segment>
-
-  <ion-label><p align="left">Robot 1</p></ion-label>
-  <ion-segment [(ngModel)]="pitRobot1" color="primary" (ionChange)="climberRobot1HasChanged($event)">
-    <ion-segment-button value=0>
-      0
-    </ion-segment-button>
-    <ion-segment-button value=1>
-      1
-    </ion-segment-button>
-    <ion-segment-button value=2>
-      2
-    </ion-segment-button>
-    <ion-segment-button value=3>
-      3
-    </ion-segment-button>
-  </ion-segment>
-
-  <ion-label><p align="left">Robot 2</p></ion-label>
-  <ion-segment [(ngModel)]="pitRobot2" color="primary" (ionChange)="climberRobot2HasChanged($event)">
-    <ion-segment-button value=0>
-      0
-    </ion-segment-button>
-    <ion-segment-button value=1>
-      1
-    </ion-segment-button>
-    <ion-segment-button value=2>
-      2
-    </ion-segment-button>
-    <ion-segment-button value=3>
-      3
-    </ion-segment-button>
-  </ion-segment>
+  <ion-item>
+   <ion-label>Is Panel Specialist</ion-label>
+   <ion-toggle [(ngModel)]="pitIsLemonSpecialist" (ionChange)="isLemonSpecialist()"></ion-toggle>
+  </ion-item>
 
   <ion-item>
    <ion-label>Has Camera</ion-label>
@@ -200,8 +127,77 @@
   <ion-toggle [(ngModel)]="pitHasEncoders" (ionChange)="hasEncodersSwitch($event)"></ion-toggle>
  </ion-item>
 
- <ion-title> <p align="left">SEALs Notes</p>
- </ion-title>
+ <ion-title> <p align="left">Climber Type</p></ion-title>
+
+ <ion-label><p align="left">Self</p></ion-label>
+ <ion-segment [(ngModel)]="pitSelf" color="primary" (ionChange)="climberSelfHasChanged($event)">
+   <ion-segment-button value=1>
+     1
+   </ion-segment-button>
+   <ion-segment-button value=2>
+     2
+   </ion-segment-button>
+   <ion-segment-button value=3>
+     3
+   </ion-segment-button>
+ </ion-segment>
+
+ <ion-label><p align="left">Robot 1</p></ion-label>
+ <ion-segment [(ngModel)]="pitRobot1" color="primary" (ionChange)="climberRobot1HasChanged($event)">
+   <ion-segment-button value=0>
+     0
+   </ion-segment-button>
+   <ion-segment-button value=1>
+     1
+   </ion-segment-button>
+   <ion-segment-button value=2>
+     2
+   </ion-segment-button>
+   <ion-segment-button value=3>
+     3
+   </ion-segment-button>
+ </ion-segment>
+
+ <ion-label><p align="left">Robot 2</p></ion-label>
+ <ion-segment [(ngModel)]="pitRobot2" color="primary" (ionChange)="climberRobot2HasChanged($event)">
+   <ion-segment-button value=0>
+     0
+   </ion-segment-button>
+   <ion-segment-button value=1>
+     1
+   </ion-segment-button>
+   <ion-segment-button value=2>
+     2
+   </ion-segment-button>
+   <ion-segment-button value=3>
+     3
+   </ion-segment-button>
+ </ion-segment>
+
+<ion-title> <p align="left">SEALs Data </p></ion-title>
+
+<ion-label> <p align="left">Ramp Ranking</p></ion-label>
+<ion-segment [(ngModel)]="pitSEALsRampRanking" color="primary" (ionChange)="rampAbilityChanged($event)">
+  <ion-segment-button value=0>
+    0
+  </ion-segment-button>
+  <ion-segment-button value=1>
+    1
+  </ion-segment-button>
+  <ion-segment-button value=2>
+    2
+  </ion-segment-button>
+  <ion-segment-button value=3>
+    3
+  </ion-segment-button>
+  <ion-segment-button value=4>
+    4
+  </ion-segment-button>
+  <ion-segment-button value=5>
+    5
+  </ion-segment-button>
+</ion-segment>
+ <ion-label> <p align="left">Notes</p></ion-label>
  <ion-item>
     <ion-textarea [(ngModel)]="pitSEALsNotes" placeholder="Miscellaneous Notes: climber notes, autos, etc." (ionChange)="notesChanged($event)"></ion-textarea>
   </ion-item>
