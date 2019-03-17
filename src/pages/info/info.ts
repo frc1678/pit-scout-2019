@@ -330,4 +330,35 @@ export class InfoPage {
     console.log('ionViewDidLoad InfoPage');
   }
 
+  ionViewWillEnter() {
+    console.log('ionViewWillEnter InfoPage');
+    if(this.pitIsLemonSpecialist == undefined) {
+      this.pitIsLemonSpecialist = false;
+      this.fb.object('/Teams/'+this.number.toString()+"/pitIsLemonSpecialist").set(this.pitIsLemonSpecialist);
+    }
+    if(this.pitHasCamera == undefined) {
+      this.pitHasCamera = false;
+      this.fb.object('/Teams/'+this.number.toString()+"/pitHasCamera").set(this.pitHasCamera);
+    }
+    if(this.pitHasVision == undefined) {
+      this.pitHasVision = false;
+      this.fb.object('/Teams/'+this.number.toString()+"/pitHasVision").set(this.pitHasVision);
+    }
+    if(this.pitCanBuddyStartLevel2 == undefined) {
+      this.pitCanBuddyStartLevel2 = false;
+      this.fb.object('/Teams/'+this.number.toString()+"/pitCanBuddyStartLevel2").set(this.pitCanBuddyStartLevel2);
+    }
+    if(this.pitHasOrangeShooter == undefined) {
+      this.pitHasOrangeShooter = false;
+      this.fb.object('/Teams/'+this.number.toString()+"/pitHasOrangeShooter").set(this.pitHasOrangeShooter);
+    }
+    if(this.pitHasGyro == undefined) {
+      this.pitHasGyro = false;
+      this.fb.object('/Teams/'+this.number.toString()+"/pitHasCamera").set(this.pitHasGyro);
+    }
+    if(this.pitHasEncoders == undefined) {
+      this.pitHasEncoders = false;
+      this.fb.object('/Teams/'+this.number.toString()+"/pitHasEncoders").set(this.pitHasEncoders);
+    }
+  }
 }
