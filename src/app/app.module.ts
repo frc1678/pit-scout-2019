@@ -38,10 +38,10 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp, {
-            scrollPadding: false,
-            scrollAssist: true,
-            autoFocusAssist: false
-        }),
+      scrollPadding: true,
+      scrollAssist: true,
+      autoFocusAssist: true
+    }),
     IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule
