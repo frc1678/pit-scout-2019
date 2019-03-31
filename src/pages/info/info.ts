@@ -354,7 +354,7 @@ export class InfoPage {
     }
     if(this.pitHasGyro == undefined) {
       this.pitHasGyro = false;
-      this.fb.object('/Teams/'+this.number.toString()+"/pitHasCamera").set(this.pitHasGyro);
+      this.fb.object('/Teams/'+this.number.toString()+"/pitHasGyro").set(this.pitHasGyro);
     }
     if(this.pitHasEncoders == undefined) {
       this.pitHasEncoders = false;
