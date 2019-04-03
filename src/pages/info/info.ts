@@ -11,7 +11,10 @@ export class InfoPage {
   pitWeight: Number;
   pitRobotWidth: Number;
   pitRobotLength: Number;
+  pitNumDriveTrainMotors: Number;
+  pitDriveTrainMotorType: String;
   pitWheelDiameter: String;
+  pitWheelType: String;
   pitProgrammingLanguage: String;
   pitDrivetrain: String;
   pitSandstormNavigationType: String;
@@ -23,7 +26,6 @@ export class InfoPage {
   pitIsLemonSpecialist: boolean;
   pitHasCamera: boolean;
   pitHasVision: boolean;
-  pitCanBuddyStartLevel2: boolean;
   pitHasOrangeShooter: boolean;
   pitHasGyro: boolean;
   pitHasEncoders: boolean;
@@ -33,7 +35,10 @@ export class InfoPage {
   pitWeightObserve: Observable<any>;
   pitRobotWidthObserve: Observable<any>;
   pitRobotLengthObserve: Observable<any>;
+  pitNumDriveTrainMotorsObserve: Observable<any>;
+  pitDriveTrainMotorTypeObserve: Observable<any>;
   pitWheelDiameterObserve: Observable<any>;
+  pitWheelTypeObserve: Observable<any>;
   pitProgrammingLanguageObserve: Observable<any>;
   pitDrivetrainObserve: Observable<any>;
   pitSandstormNavigationTypeObserve: Observable<any>;
@@ -44,7 +49,6 @@ export class InfoPage {
   pitIsLemonSpecialistObserve: Observable<any>;
   pitHasCameraObserve: Observable<any>;
   pitHasVisionObserve: Observable<any>;
-  pitCanBuddyStartLevel2Observe: Observable<any>;
   pitHasOrangeShooterObserve: Observable<any>;
   pitHasGyroObserve: Observable<any>;
   pitHasEncodersObserve: Observable<any>;
@@ -64,14 +68,16 @@ export class InfoPage {
       this.pitDataKeys = ['pitWeight',
       'pitRobotWidth',
       'pitRobotLength',
+      'pitNumDriveTrainMotors',
+      'pitDriveTrainMotorType',
       'pitWheelDiameter',
+      'pitWheelType',
       'pitProgrammingLanguage',
       'pitDrivetrain',
       'pitSandstormNavigationType',
       'pitIsLemonSpecialist',
       'pitHasCamera',
       'pitHasVision',
-      'pitCanBuddyStartLevel2',
       'pitHasOrangeShooter',
       'pitHasPid',
       'pitHasGyro',
@@ -170,10 +176,37 @@ export class InfoPage {
     }
   }
 
+  pitNumDriveTrainMotorsChanged() {
+    console.log('Motor Amount: ' + this.pitNumDriveTrainMotors);
+    try {
+      this.fb.object('/Teams/'+this.number.toString()+"/pitNumDriveTrainMotors").set(+this.pitNumDriveTrainMotors);
+    } catch(e) {
+      console.log(e)
+    }
+  }
+
+  driveTrainMotorTypeChanged() {
+    console.log('Motor Type: ' + this.pitDriveTrainMotorType);
+    try {
+      this.fb.object('/Teams/'+this.number.toString()+"/pitDriveTrainMotorType").set(this.pitDriveTrainMotorType);
+    } catch(e) {
+      console.log(e)
+    }
+  }
+
   wheelDiameterChanged() {
-    console.log('wheelDiameter: ' + this.pitWheelDiameter);
+    console.log('wheel Diameter: ' + this.pitWheelDiameter);
     try {
       this.fb.object('/Teams/'+this.number.toString()+"/pitWheelDiameter").set(this.pitWheelDiameter);
+    } catch(e) {
+      console.log(e)
+    }
+  }
+
+  wheelTypeChanged() {
+    console.log('wheelType: ' + this.pitWheelType);
+    try {
+      this.fb.object('/Teams/'+this.number.toString()+"/pitWheelType").set(this.pitWheelType);
     } catch(e) {
       console.log(e)
     }
@@ -281,14 +314,6 @@ export class InfoPage {
       console.log(e)
     }
   }
-  canBuddyStartLevel2Switch() {
-    console.log('canBuddyStartLevel2Switch: ' + this.pitCanBuddyStartLevel2);
-    try {
-      this.fb.object('/Teams/'+this.number.toString()+"/pitCanBuddyStartLevel2").set(this.pitCanBuddyStartLevel2);
-    } catch(e) {
-      console.log(e)
-    }
-  }
 
   hasGyroSwitch() {
     console.log('hasGyro: '+ this.pitHasGyro);
@@ -343,10 +368,6 @@ export class InfoPage {
     if(this.pitHasVision == undefined) {
       this.pitHasVision = false;
       this.fb.object('/Teams/'+this.number.toString()+"/pitHasVision").set(this.pitHasVision);
-    }
-    if(this.pitCanBuddyStartLevel2 == undefined) {
-      this.pitCanBuddyStartLevel2 = false;
-      this.fb.object('/Teams/'+this.number.toString()+"/pitCanBuddyStartLevel2").set(this.pitCanBuddyStartLevel2);
     }
     if(this.pitHasOrangeShooter == undefined) {
       this.pitHasOrangeShooter = false;

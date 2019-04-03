@@ -26,12 +26,32 @@
     <ion-input type="number" pattern="[0-9]*" [(ngModel)]="pitRobotWidth" placeholder="Inches" (ionChange)="robotWidthChanged($event)"></ion-input>
   </ion-item>
 
-
   <!--pitRobotLength-->
   <ion-item>
     <ion-label color="primary" fixed>Robot Length</ion-label>
     <ion-input type="number" pattern="[0-9]*" [(ngModel)]="pitRobotLength" placeholder="Inches" (ionChange)="robotLengthChanged($event)"></ion-input>
   </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" fixed>DT Motors</ion-label>
+    <ion-input type="number" pattern="[0-9]*" [(ngModel)]="pitNumDriveTrainMotors" placeholder="Amount" (ionChange)="pitNumDriveTrainMotorsChanged($event)"></ion-input>
+  </ion-item>
+
+  <ion-label> <p align="left">DT Motor Type</p></ion-label>
+  <ion-segment [(ngModel)]="pitDriveTrainMotorType" color="primary" (ionChange)="driveTrainMotorTypeChanged($event)">
+    <ion-segment-button value="Mini CIMs">
+      Mini CIMs
+    </ion-segment-button>
+    <ion-segment-button value="CIMs">
+      CIMs
+    </ion-segment-button>
+    <ion-segment-button value="NEOs">
+      NEOs
+    </ion-segment-button>
+    <ion-segment-button value="Other">
+      Other
+    </ion-segment-button>
+  </ion-segment>
 
   <ion-label> <p align="left">Wheel Diameter</p></ion-label>
   <ion-segment [(ngModel)]="pitWheelDiameter" color="primary" (ionChange)="wheelDiameterChanged($event)">
@@ -40,6 +60,47 @@
     </ion-segment-button>
     <ion-segment-button value="6 Inches">
       6 Inches
+    </ion-segment-button>
+    <ion-segment-button value="8 Inches">
+      8 Inches
+    </ion-segment-button>
+    <ion-segment-button value="Other">
+      Other
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-label> <p align="left">Wheel Type</p></ion-label>
+  <ion-segment [(ngModel)]="pitWheelType" color="primary" (ionChange)="wheelTypeChanged($event)">
+    <ion-segment-button value="Traction">
+      Traction
+    </ion-segment-button>
+    <ion-segment-button value="Colson">
+      Colson
+    </ion-segment-button>
+    <ion-segment-button value="Pneumatics">
+      Pneumatics
+    </ion-segment-button>
+    <ion-segment-button value="Omni">
+      Omni
+    </ion-segment-button>
+    <ion-segment-button value="Other">
+      Other
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-label> <p align="left">Drive Train</p></ion-label>
+  <ion-segment [(ngModel)]="pitDrivetrain" color="primary" (ionChange)="driveTrainChanged($event)">
+    <ion-segment-button value="Tank">
+      Tank
+    </ion-segment-button>
+    <ion-segment-button value="Swerve">
+      Swerve
+    </ion-segment-button>
+    <ion-segment-button value="Mecanum">
+      Mecanum
+    </ion-segment-button>
+    <ion-segment-button value="Tank Treads">
+      Tank Treads
     </ion-segment-button>
     <ion-segment-button value="Other">
       Other
@@ -61,23 +122,6 @@
       Other
     </ion-segment-button>
   </ion-segment>
-
-  <ion-label> <p align="left">Drive Train</p></ion-label>
-  <ion-segment [(ngModel)]="pitDrivetrain" color="primary" (ionChange)="driveTrainChanged($event)">
-    <ion-segment-button value="Tank">
-      Tank
-    </ion-segment-button>
-    <ion-segment-button value="Swerve">
-      Swerve
-    </ion-segment-button>
-    <ion-segment-button value="Mecanum">
-      Mecanum
-    </ion-segment-button>
-    <ion-segment-button value="Other">
-      Other
-    </ion-segment-button>
-  </ion-segment>
-
 
   <ion-label> <p align="left">SandStorm</p></ion-label>
   <ion-segment [(ngModel)]="pitSandstormNavigationType" color="primary" (ionChange)="sandstormChanged($event)">
@@ -105,11 +149,6 @@
   <ion-item>
    <ion-label>Has Vision</ion-label>
    <ion-toggle [(ngModel)]="pitHasVision" (ionChange)="hasVisionSwitch()"></ion-toggle>
-  </ion-item>
-
-  <ion-item>
-   <ion-label>Can Buddy Start Level 2</ion-label>
-   <ion-toggle [(ngModel)]="pitCanBuddyStartLevel2" (ionChange)="canBuddyStartLevel2Switch()"></ion-toggle>
   </ion-item>
 
   <ion-item>
