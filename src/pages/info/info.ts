@@ -17,7 +17,6 @@ export class InfoPage {
   pitWheelType: String;
   pitProgrammingLanguage: String;
   pitDrivetrain: String;
-  pitSandstormNavigationType: String;
   pitSEALsRampRanking: String;
   pitClimbType: Map<String,Number>; // Maps https://stackoverflow.com/questions/37699320/iterating-over-typescript-map
   pitSelf: String;
@@ -25,10 +24,6 @@ export class InfoPage {
   pitRobot2: String;
   pitIsLemonSpecialist: boolean;
   pitHasCamera: boolean;
-  pitHasVision: boolean;
-  pitHasOrangeShooter: boolean;
-  pitHasGyro: boolean;
-  pitHasEncoders: boolean;
   pitSEALsNotes: String;
   fb: AngularFireDatabase;
   number: Number;
@@ -41,17 +36,12 @@ export class InfoPage {
   pitWheelTypeObserve: Observable<any>;
   pitProgrammingLanguageObserve: Observable<any>;
   pitDrivetrainObserve: Observable<any>;
-  pitSandstormNavigationTypeObserve: Observable<any>;
   pitSEALsRampRankingObserve: Observable<any>;
   pitSelfObserve: Observable<any>;
   pitRobot1Observe: Observable<any>;
   pitRobot2Observe: Observable<any>;
   pitIsLemonSpecialistObserve: Observable<any>;
   pitHasCameraObserve: Observable<any>;
-  pitHasVisionObserve: Observable<any>;
-  pitHasOrangeShooterObserve: Observable<any>;
-  pitHasGyroObserve: Observable<any>;
-  pitHasEncodersObserve: Observable<any>;
   pitSEALsNotesObserve: Observable<any>;
   name: String;
   storage: Storage;
@@ -74,14 +64,8 @@ export class InfoPage {
       'pitWheelType',
       'pitProgrammingLanguage',
       'pitDrivetrain',
-      'pitSandstormNavigationType',
       'pitIsLemonSpecialist',
       'pitHasCamera',
-      'pitHasVision',
-      'pitHasOrangeShooter',
-      'pitHasPid',
-      'pitHasGyro',
-      'pitHasEncoders',
       'pitSEALsNotes']
 
         for (var i = 0; i < this.pitDataKeys.length; i++) {
@@ -230,15 +214,6 @@ export class InfoPage {
     }
   }
 
-  sandstormChanged() {
-    console.log('sandStorm: ' + this.pitSandstormNavigationType);
-    try {
-      this.fb.object('/Teams/'+this.number.toString()+"/pitSandstormNavigationType").set(this.pitSandstormNavigationType);
-    } catch(e) {
-      console.log(e)
-    }
-  }
-
   climberSelfHasChanged() {
     console.log('pitSelf: ' + this.pitSelf);
     this.climberTypeHasChanged();
@@ -279,15 +254,6 @@ export class InfoPage {
     }
   }
 
-  hasOrangeShooterSwitch() {
-    console.log('pitHasOrangeShooter: ' + this.pitHasOrangeShooter)
-    try {
-      this.fb.object('/Teams/'+this.number.toString()+"/pitHasOrangeShooter").set(this.pitHasOrangeShooter);
-    } catch(e) {
-      console.log(e)
-    }
-  }
-
   isLemonSpecialist() {
     console.log('isLemonSpecialist: '+ this.pitIsLemonSpecialist);
     try {
@@ -301,33 +267,6 @@ export class InfoPage {
     console.log('hasCamera: '+ this.pitHasCamera);
     try {
       this.fb.object('/Teams/'+this.number.toString()+"/pitHasCamera").set(this.pitHasCamera);
-    } catch(e) {
-      console.log(e)
-    }
-  }
-
-  hasVisionSwitch() {
-    console.log('hasVision: '+ this.pitHasVision);
-    try {
-      this.fb.object('/Teams/'+this.number.toString()+"/pitHasVision").set(this.pitHasVision);
-    } catch(e) {
-      console.log(e)
-    }
-  }
-
-  hasGyroSwitch() {
-    console.log('hasGyro: '+ this.pitHasGyro);
-    try {
-      this.fb.object('/Teams/'+this.number.toString()+"/pitHasGyro").set(this.pitHasGyro);
-    } catch(e) {
-      console.log(e)
-    }
-  }
-
-  hasEncodersSwitch() {
-    console.log('hasEncoders: '+ this.pitHasEncoders);
-    try {
-      this.fb.object('/Teams/'+this.number.toString()+"/pitHasEncoders").set(this.pitHasEncoders);
     } catch(e) {
       console.log(e)
     }
@@ -364,22 +303,6 @@ export class InfoPage {
     if(this.pitHasCamera == undefined) {
       this.pitHasCamera = false;
       this.fb.object('/Teams/'+this.number.toString()+"/pitHasCamera").set(this.pitHasCamera);
-    }
-    if(this.pitHasVision == undefined) {
-      this.pitHasVision = false;
-      this.fb.object('/Teams/'+this.number.toString()+"/pitHasVision").set(this.pitHasVision);
-    }
-    if(this.pitHasOrangeShooter == undefined) {
-      this.pitHasOrangeShooter = false;
-      this.fb.object('/Teams/'+this.number.toString()+"/pitHasOrangeShooter").set(this.pitHasOrangeShooter);
-    }
-    if(this.pitHasGyro == undefined) {
-      this.pitHasGyro = false;
-      this.fb.object('/Teams/'+this.number.toString()+"/pitHasGyro").set(this.pitHasGyro);
-    }
-    if(this.pitHasEncoders == undefined) {
-      this.pitHasEncoders = false;
-      this.fb.object('/Teams/'+this.number.toString()+"/pitHasEncoders").set(this.pitHasEncoders);
     }
   }
 }

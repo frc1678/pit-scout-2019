@@ -123,19 +123,6 @@
     </ion-segment-button>
   </ion-segment>
 
-  <ion-label> <p align="left">SandStorm</p></ion-label>
-  <ion-segment [(ngModel)]="pitSandstormNavigationType" color="primary" (ionChange)="sandstormChanged($event)">
-    <ion-segment-button value="Vision">
-      Vision
-    </ion-segment-button>
-    <ion-segment-button value="Auto">
-      Auto
-    </ion-segment-button>
-    <ion-segment-button value="Hybrid">
-      Hybrid
-    </ion-segment-button>
-  </ion-segment>
-
   <ion-item>
    <ion-label>Is Panel Specialist</ion-label>
    <ion-toggle [(ngModel)]="pitIsLemonSpecialist" (ionChange)="isLemonSpecialist()"></ion-toggle>
@@ -145,26 +132,6 @@
    <ion-label>Has Camera</ion-label>
    <ion-toggle [(ngModel)]="pitHasCamera" (ionChange)="hasCameraSwitch()"></ion-toggle>
   </ion-item>
-
-  <ion-item>
-   <ion-label>Has Vision</ion-label>
-   <ion-toggle [(ngModel)]="pitHasVision" (ionChange)="hasVisionSwitch()"></ion-toggle>
-  </ion-item>
-
-  <ion-item>
-   <ion-label>Has Cargo Shooter</ion-label>
-   <ion-toggle [(ngModel)]="pitHasOrangeShooter" (ionChange)="hasOrangeShooterSwitch()"></ion-toggle>
-  </ion-item>
-
- <ion-item>
-  <ion-label>Has Gyro</ion-label>
-  <ion-toggle [(ngModel)]="pitHasGyro" (ionChange)="hasGyroSwitch($event)"></ion-toggle>
- </ion-item>
-
- <ion-item>
-  <ion-label>Has Encoders</ion-label>
-  <ion-toggle [(ngModel)]="pitHasEncoders" (ionChange)="hasEncodersSwitch($event)"></ion-toggle>
- </ion-item>
 
  <ion-title> <p align="left">Climber Type</p></ion-title>
 
