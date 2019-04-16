@@ -19,6 +19,7 @@ export class TeamsPage {
   vals: any[];
   display_teams: any[];
   storage: Storage;
+  lastDatafield: string;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -30,34 +31,37 @@ export class TeamsPage {
     this.teams = this.teamsList.valueChanges();
     this.fb = firebase;
     this.storage = storage;
-    this.datafieldChanged()
+    this.datafieldChanged();
+    this.val_search = "Null";
   }
 
   datafieldChanged() {
-    console.log(this.datafield)
-    var vals = ['Null']
-    var tempteams = []
+    var vals = ['Null'];
+    var tempteams = [];
     this.teams.forEach(teamlist => {
       for (var team of teamlist) {
         if (!(vals.indexOf(team[this.datafield]) > 0) && team[this.datafield] != undefined) {
-          vals.push(team[this.datafield])
+          vals.push(team[this.datafield]);
         }
         if (team[this.datafield] == undefined) {
-          tempteams.push(team)
+          tempteams.push(team);
         }
       }
+      //HACK, needs to be changed
+      if (this.datafield === "No Filter" || this.datafield != this.lastDatafield) {
+        this.val_search = "Null";
+      }
       this.vals = vals.sort((n1,n2)=>(+n1)-(+n2));
-      this.val_search = "Null"
-      this.display_teams = tempteams
+      this.display_teams = tempteams;
     })
   }
 
   valueChanged() {
+    // TODO: Add filter update function and put that in ionViewWillEnter
     var tempteams = []
     if (this.val_search != "Null") {
       this.teams.forEach(teamlist => {
         for (var team of teamlist) {
-          console.log(team[this.datafield])
           if (team[this.datafield] == this.val_search) {
             tempteams.push(team)
           }
@@ -83,6 +87,7 @@ export class TeamsPage {
 
 
   goToInfoPage(num,name) {
+    this.lastDatafield = this.datafield;
     console.log("go to InfoPage with team number " + num)
     this.navCtrl.push(InfoPage,{
       firebase:this.fb,
@@ -106,15 +111,7 @@ export class TeamsPage {
   }
 
   ionViewWillEnter() {
-    this.datafieldChanged();
     this.valueChanged();
-    var tempteams = []
-    this.teams.forEach(teamlist => {
-      for (var team of teamlist) {
-        tempteams.push(team)
-      }
-      this.display_teams = tempteams
-    })
   }
 
   addTeam(){
