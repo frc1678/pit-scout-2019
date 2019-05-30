@@ -20,7 +20,7 @@ export const firebaseConfig = {
   databaseURL: "https://dev-1-2019.firebaseio.com",
   projectId: "dev-1-2019",
   storageBucket: "dev-1-2019.appspot.com",
-  messagingSenderId: "430779624782"
+  messagingSenderId: "430779624782",
 };
 
 /* https://www.joshmorony.com/hosting-an-ionic-pwa-with-firebase-hosting/
@@ -40,11 +40,11 @@ export const firebaseConfig = {
     IonicModule.forRoot(MyApp, {
       scrollPadding: true,
       scrollAssist: true,
-      autoFocusAssist: true
+      autoFocusAssist: true,
     }),
     IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -55,7 +55,7 @@ export const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })
 export class AppModule {}

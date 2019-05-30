@@ -10,7 +10,6 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'teams.html',
 })
 export class TeamsPage {
-
   teamsList: AngularFireList<any>;
   teams: Observable<any[]>;
   fb: AngularFireDatabase;
@@ -20,7 +19,6 @@ export class TeamsPage {
   display_teams: any[];
   storage: Storage;
   lastDatafield: string;
-
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
@@ -58,42 +56,42 @@ export class TeamsPage {
 
   valueChanged() {
     // TODO: Add filter update function and put that in ionViewWillEnter
-    var tempteams = []
+    var tempteams = [];
     if (this.val_search != "Null") {
       this.teams.forEach(teamlist => {
         for (var team of teamlist) {
           if (team[this.datafield] == this.val_search) {
-            tempteams.push(team)
+            tempteams.push(team);
           }
         }
-        this.display_teams = tempteams
+        this.display_teams = tempteams;
       })
     } else {
       this.teams.forEach(teamlist => {
         for (var team of teamlist) {
           if (team[this.datafield] == undefined) {
-            tempteams.push(team)
+            tempteams.push(team);
           }
         }
-        this.display_teams = tempteams
+        this.display_teams = tempteams;
       })
     }
   }
 
   //Stores teams when called in ionViewDidLoad
   storeTeam(team) {
-    this.storage.set(""+team.teamNumber,team)
+    this.storage.set(""+team.teamNumber,team);
   }
 
 
   goToInfoPage(num,name) {
     this.lastDatafield = this.datafield;
-    console.log("go to InfoPage with team number " + num)
+    console.log("go to InfoPage with team number " + num);
     this.navCtrl.push(InfoPage,{
       firebase:this.fb,
       number:num,
       name:name,
-      storage:this.storage
+      storage:this.storage,
     });
   }
 
@@ -106,7 +104,7 @@ export class TeamsPage {
         }
       },
       error: err => console.error('Observer got an error: ' + err),
-      complete: () => console.log('Teams list retrieved')
+      complete: () => console.log('Teams list retrieved'),
     })
   }
 
@@ -121,11 +119,11 @@ export class TeamsPage {
       inputs: [
         {
           name: 'title',
-          placeholder: 'Enter Team Number'
+          placeholder: 'Enter Team Number',
         },
         {
           name: 'name',
-          placeholder: 'Enter Team Name'
+          placeholder: 'Enter Team Name',
         }
       ],
       buttons: [
@@ -138,18 +136,17 @@ export class TeamsPage {
       {
         text: 'Save',
         handler: data => {
-          console.log(data.title)
           const newTeamRef = this.fb.object('/Teams/'+data.title);
           newTeamRef.set({
             teamNumber: parseInt(data.title),
-            name: data.name
+            name: data.name,
           })
           var tempteams = []
           this.teams.forEach(teamlist => {
             for (var team of teamlist) {
-              tempteams.push(team)
+              tempteams.push(team);
             }
-            this.display_teams = tempteams
+            this.display_teams = tempteams;
           })
         }
       }
