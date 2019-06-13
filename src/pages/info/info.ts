@@ -22,7 +22,7 @@ export class InfoPage {
   pitSelf: String;
   pitRobot1: String;
   pitRobot2: String;
-  pitIsLemonSpecialist: boolean;
+  pitIsPanelSpecialist: boolean;
   pitHasCamera: boolean;
   pitSEALsNotes: String;
   fb: AngularFireDatabase;
@@ -40,7 +40,7 @@ export class InfoPage {
   pitSelfObserve: Observable<any>;
   pitRobot1Observe: Observable<any>;
   pitRobot2Observe: Observable<any>;
-  pitIsLemonSpecialistObserve: Observable<any>;
+  pitIsPanelSpecialistObserve: Observable<any>;
   pitHasCameraObserve: Observable<any>;
   pitSEALsNotesObserve: Observable<any>;
   name: String;
@@ -64,7 +64,7 @@ export class InfoPage {
       'pitWheelType',
       'pitProgrammingLanguage',
       'pitDrivetrain',
-      'pitIsLemonSpecialist',
+      'pitIsPanelSpecialist',
       'pitHasCamera',
       'pitSEALsNotes'];
 
@@ -235,9 +235,9 @@ export class InfoPage {
     }
   }
 
-  isLemonSpecialist() {
+  isPanelSpecialist() {
     try {
-      this.fb.object('/Teams/'+this.number.toString()+"/pitIsLemonSpecialist").set(this.pitIsLemonSpecialist);
+      this.fb.object('/Teams/'+this.number.toString()+"/pitIsPanelSpecialist").set(this.pitIsPanelSpecialist);
     } catch(e) {
       console.log(e)
     }
@@ -273,9 +273,9 @@ export class InfoPage {
 
   ionViewWillEnter() {
     console.log('ionViewWillEnter InfoPage');
-    if(this.pitIsLemonSpecialist == undefined) {
-      this.pitIsLemonSpecialist = false;
-      this.fb.object('/Teams/'+this.number.toString()+"/pitIsLemonSpecialist").set(this.pitIsLemonSpecialist);
+    if(this.pitIsPanelSpecialist == undefined) {
+      this.pitIsPanelSpecialist = false;
+      this.fb.object('/Teams/'+this.number.toString()+"/pitIsPanelSpecialist").set(this.pitIsPanelSpecialist);
     }
     if(this.pitHasCamera == undefined) {
       this.pitHasCamera = false;
